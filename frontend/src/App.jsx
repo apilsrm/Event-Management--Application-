@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from "./pages/Home"
+import AddEvent from "./pages/AddEvent"
+import EditEvent from "./pages/EditEvent";
+// import LoginPage from "./pages/LoginPage";
+// import RegisterPage from './pages/RegisterPage';
+// import { setAuthToken } from './api';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  // const [token, setToken] = useState(null);
+
+  // useEffect(() => {
+  //   if (token) {
+  //     setAuthToken(token);
+  //   }
+  // }, [token]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+         
+        {/* <Route path="/login" element= {< LoginPage setToken={setToken} /> }/> */}
+        {/* <Route path="/register" element= {< RegisterPage /> }/> */}
+        {/* <Route path="/add" element= {<AddEvent token={token} /> }/> */}
+        {/* <Route path="/create" element= {token ? <AddEvent token={token} /> : <Navigate to="/login" />}/> */}
+        {/* <Route path="/edit/:id" element= {<EditEvent token={token} /> }/> */}
+        {/* <Route path="/edit/:id" element= {token ? <EditEvent token={token} /> : <Navigate to="/login" /> }/> */}
+        {/* <Route path="/" element= {<Home token={token} /> }/> */}
+        <Route path="/" element= {<Home /> }/>
+        <Route path="/" element= {<AddEvent /> }/>
+        <Route path="/" element= {<EditEvent /> }/>
 
-export default App
+
+       
+      
+      </Routes>
+    </Router>
+    </>
+  );
+};
+
+export default App;

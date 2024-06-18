@@ -30,6 +30,9 @@ const writeUsers = (users) => {
 // Registration route
 router.post('/register', (req, res) => {
     const { username, password } = req.body;
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Username and password are required' });
+      }
     const users = readUsers();
 
     // Check if user already exists
@@ -57,9 +60,12 @@ router.post('/register', (req, res) => {
 });
 
 // Login route
-router.post('/login', (req, res) => {
+router.post('/login',(req, res) => {
     const { username, password } = req.body;
-
+      
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Username and password are required' });
+      }
     const users = readUsers();
     // const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
@@ -71,7 +77,7 @@ router.post('/login', (req, res) => {
     }
 
     // Compare password
-    bcrypt.compare(password, user.password, (err, isMatch) => {
+     bcrypt.compare(password, user.password, (err, isMatch) => {
         if (err) throw err;
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid username or password' });
