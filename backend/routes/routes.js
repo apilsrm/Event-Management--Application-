@@ -5,7 +5,7 @@ import { Router } from "express";
 // import { authenticate } from "../middleware/auth.js";
 // import {eventValidators} from "../middleware/eventValidators.js";
 
-import { readEvents, createEvent, updateEvent, deleteEvent } from "../controllers/event.controller.js"
+import { readEvents, createEvent, updateEvent, deleteEvent, getSingleEvent } from "../controllers/event.controller.js"
 
 // const router = express.Router();
 const router = Router()
@@ -19,5 +19,7 @@ router.get('/', readEvents);
 router.post('/create', createEvent);
 router.put('/:id', updateEvent);
 router.delete('/:id', deleteEvent);
+// Add the new route for fetching a single event by ID
+router.get('/:id', getSingleEvent);
 
 export default router;

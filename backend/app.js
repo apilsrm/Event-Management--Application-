@@ -3,8 +3,6 @@ import cors from "cors"
 // import bodyParser from "body-parser"
 import dotenv from "dotenv"
 
-import eventRoute from "./routes/routes.js"
-
 dotenv.config({
     path: './.env'
 })
@@ -27,7 +25,7 @@ app.use(express.urlencoded({extended: true}))
 //it will deals with public assects like image pdf icon favicon
 app.use(express.static("public"));
 
-app.use("/event", eventRoute)
+
 
 
 

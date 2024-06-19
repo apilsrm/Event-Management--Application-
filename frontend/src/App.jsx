@@ -29,8 +29,8 @@ const App = () => {
         {/* <Route path="/edit/:id" element= {token ? <EditEvent token={token} /> : <Navigate to="/login" /> }/> */}
         {/* <Route path="/" element= {<Home token={token} /> }/> */}
         <Route path="/" element= {<Home /> }/>
-        <Route path="/" element= {<AddEvent /> }/>
-        <Route path="/" element= {<EditEvent /> }/>
+        <Route path="/events/create" element= {<AddEvent /> }/>
+        <Route path="/events/edit/:id" element= {<EditEvent /> }/>
 
 
        

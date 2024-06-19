@@ -38,6 +38,20 @@ const createEvent = (req, res) => {
     res.status(201).json({ message: 'Event created successfully', newEvent});
 };
 
+const getSingleEvent = (req, res) => {
+    const { id } = req.params; 
+    const data = fs.readFileSync(filePath, 'utf-8'); //fs.readFileSync to read the contents of a file specified by filePath. This file presumably contains a JSON array of existing events
+    const events = JSON.parse(data); //to convert text into a JavaScript object:
+
+    const event = events.find(event => event.id == parseInt(id));
+
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+  
+    res.json(event); 
+}
+
 const updateEvent = (req, res) => {
     const { id } = req.params;
     const updatedEvent = req.body;
@@ -79,4 +93,5 @@ export {
     createEvent,
     updateEvent,
     deleteEvent,
+    getSingleEvent,
 };

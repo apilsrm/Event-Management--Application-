@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+// import Spinner from "./Spinner";
 
-const EventForm = ({ onSubmit, initialValues = {} }) => {
+const EventForm = ({onSubmit, initialValues = {} }) => {
   const { register, handleSubmit, setValue, errors } = useForm();
 
   useEffect(() => {
@@ -11,6 +12,8 @@ const EventForm = ({ onSubmit, initialValues = {} }) => {
   }, [initialValues, setValue]);
 
   return (
+    <>
+    {/* { loading ? <Spinner /> : ""} */}
     <form onSubmit={handleSubmit(onSubmit)} className="event-form">
       {/* <input name="title" ref={register({ required: true })} placeholder="Title" /> */}
       <input name="title" {...register("title", {required:true})} placeholder="Title" />
@@ -30,6 +33,7 @@ const EventForm = ({ onSubmit, initialValues = {} }) => {
 
       <button type="submit">Submit</button>
     </form>
+    </>
   );
 };
 
