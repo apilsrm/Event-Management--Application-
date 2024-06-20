@@ -22,7 +22,7 @@ const LoginPage = ({ setToken }) => {
 
   return (
     <div>
-      <h1>Logins</h1>
+      
       <Login onLogin={handleLogin} />
     </div>
   );

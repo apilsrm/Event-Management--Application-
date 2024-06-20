@@ -5,8 +5,8 @@ import AddEvent from "./pages/AddEvent"
 import EditEvent from "./pages/EditEvent";
 import ShowEvent from "./pages/ShowEvent"
 import DeleteEvent from './pages/DeleteEvent';
-// import LoginPage from "./pages/LoginPage";
-// import RegisterPage from './pages/RegisterPage';
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from './pages/RegisterPage';
 // import { setAuthToken } from './api';
 
 const App = () => {

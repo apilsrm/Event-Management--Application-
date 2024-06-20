@@ -1,18 +1,21 @@
 
-import { Link } from "react-router-dom";
-import { AiOutlineEdit } from "react-icons/ai";
-import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineDelete } from "react-icons/md";
+// import { Link } from "react-router-dom";
+// import { AiOutlineEdit } from "react-icons/ai";
+// import { BsInfoCircle } from "react-icons/bs";
+// import { MdOutlineDelete } from "react-icons/md";
+
+import Card from "./Card";
 
 const EventList = ({ events}) => {
 
 
   return (
     <>
+    
 
+    <Card events={events}/>
 
-
-      <table className="w-full border-separate border-spacing-2">
+      {/* <table className="w-full border-separate border-spacing-2">
         <thead>
           <tr>
             <th className="border border-slate-600 rounded-md">No</th>
@@ -72,7 +75,7 @@ const EventList = ({ events}) => {
             );
           })}
         </tbody>
-      </table>
+      </table> */}
     </>
 
   );

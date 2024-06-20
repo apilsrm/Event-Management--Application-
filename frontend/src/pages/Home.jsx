@@ -36,9 +36,9 @@ const Home = () => {
     <div className='p-4'>
     
     <div className="flex justify-between items-center">
-          <h1 className="text-3xl my-8">events List</h1>
+          <h1 className="text-3xl my-8">Events List</h1>
           <Link to="/events/create">
-            <MdOutlineAddBox className="text-sky-800 text-4xl" />
+            <MdOutlineAddBox className="text-sky-700 text-6xl" />
           </Link>
         </div>
 
