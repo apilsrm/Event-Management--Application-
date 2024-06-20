@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./pages/Home"
 import AddEvent from "./pages/AddEvent"
 import EditEvent from "./pages/EditEvent";
+import ShowEvent from "./pages/ShowEvent"
+import DeleteEvent from './pages/DeleteEvent';
 // import LoginPage from "./pages/LoginPage";
 // import RegisterPage from './pages/RegisterPage';
 // import { setAuthToken } from './api';
@@ -31,6 +33,9 @@ const App = () => {
         <Route path="/" element= {<Home /> }/>
         <Route path="/events/create" element= {<AddEvent /> }/>
         <Route path="/events/edit/:id" element= {<EditEvent /> }/>
+        <Route path="/events/details/:id" element={<ShowEvent/>} />
+        <Route path="/events/delete/:id" element={<DeleteEvent/>} />
+
 
 
        

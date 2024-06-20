@@ -3,6 +3,7 @@ import EventForm from "../components/EventForm"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import BackButton from "../components/BackButton";
 
 
 
@@ -40,9 +41,11 @@ const AddEvent = () => {
       };
 
   return (
-    <div> 
-       <h1>Add Event</h1>
+    <div className="py-4 "> 
+       <BackButton />
+       <h1 className="text-3xl my-4 text-center align-item-center">Add Event</h1>
        {loading ? <Spinner /> : ""}
+
       <EventForm   onSubmit={handleSubmit} />
     </div>
   )

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import BackButton from "../components/BackButton";
 
 const EditEvent = () => {
   const { id } = useParams();
@@ -38,8 +39,9 @@ const EditEvent = () => {
   };
 
   return (
-    <div>
-      <h1>Edit Event</h1>
+    <div className="py-4">
+      <BackButton/>
+      <h1 className="text-3xl my-4 text-center align-item-center" >Edit Event</h1>
       {loading ? <Spinner /> : ""}
       <EventForm onSubmit={handleSubmit} initialValues={initialValues} />
     </div>
