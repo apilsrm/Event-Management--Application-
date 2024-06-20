@@ -7,7 +7,7 @@ import BackButton from "../components/BackButton";
 
 
 
-const AddEvent = () => {
+const AddEvent = ({ token }) => {
   const [loading, setLoading] = useState(false);
   // const [title, setTitle] = useState("");
   // const [description, setDescription] = useState("");
@@ -28,7 +28,9 @@ const AddEvent = () => {
           //   headers: { Authorization: `Bearer ${token}` }
           // });
           axios
-            .post("http://localhost:8000/api/events/create", data)
+            .post("http://localhost:8000/api/events/create", data, {
+              headers: { Authorization: `Bearer ${token}` }
+            })
             .then(() => {
               setLoading(false);
               navigate("/");

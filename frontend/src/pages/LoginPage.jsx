@@ -2,22 +2,29 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Login from '../components/Login';
-import { login } from "../api"
+// import { login } from "../api"
 
 
 const LoginPage = ({ setToken }) => {
   const navigate = useNavigate();
 
   const handleLogin = async (data) => {
-    try {
-      // const response = await axios.post('/auth/login', data);
-      const response = await login('/auth/login', data);
-      // console.log("oginResponse",response)
-      setToken(response.data.token);
+
+      await axios
+      .post('http://localhost:8000/api/auth/login', data)
+      .then((res) => {
+        // console.log(res.data)
+        setToken(res.data.token);
       navigate('/');
-    } catch (error) {
-      console.error('Login error:', error);
-    }
+        
+      })
+      .catch((err) => {
+        console.log('Login error:',err);
+        // console.log("resdata", res.data)
+       
+      });
+    //   const response = await axios.post('http://localhost:8000/api/auth/login', data);
+
   };
 
   return (

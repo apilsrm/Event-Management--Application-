@@ -5,7 +5,7 @@ import axios from "axios";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 
-const EditEvent = () => {
+const EditEvent = ({ token }) => {
   const { id } = useParams();
   const [initialValues, setInitialValues] = useState({});
   const navigate = useNavigate();
@@ -17,7 +17,11 @@ const EditEvent = () => {
     //   headers: { Authorization: `Bearer ${token}` }
     // })
     axios
-      .get(`http://localhost:8000/api/events/${id}`)
+      .get(`http://localhost:8000/api/events/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
+              })
+      
+
       .then((response) => {
         setInitialValues(response.data);
         setLoading(false);
@@ -28,7 +32,9 @@ const EditEvent = () => {
   const handleSubmit = async (data) => {
     try {
      setLoading(true);
-      await axios.put(`http://localhost:8000/api/events/${id}`, data)
+      await axios.put(`http://localhost:8000/api/events/${id}`, data , {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then(()=> {
         setLoading(false);
         navigate("/");
