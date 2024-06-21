@@ -19,9 +19,6 @@ const DeleteEvent = () => {
       .delete(`http://localhost:8000/api/events/${id}`)
       .then(() => {
         setLoading(false);
-          
-
-
         navigate("/");
       })
       .catch((err) => {

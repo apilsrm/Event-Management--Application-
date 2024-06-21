@@ -1,35 +1,72 @@
 import { Link } from 'react-router-dom';
-import EventList from "../components/EventList"
+// import EventList from "../components/EventList"
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { MdOutlineAddBox } from 'react-icons/md';
 
 
 import Spinner from "../components/Spinner"
+import { fetchEvents } from '../api';
+import Card from '../components/Card';
+
 
 const Home = () => {
   
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [titleSearchTerm, setTitleSearchTerm] = useState("");
+  const [dateSearchTerm, setDateSearchTerm] = useState("");
+  // const [filteredEvents, setFilteredEvents] = useState({events});
+
 
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get("http://localhost:8000/api/events")
-      .then((res) => {
-        // console.log(res.data)
-        setEvents(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+    fetchEvents(setEvents, setLoading)
+         
+
+    
+    // axios
+       // .get("http://localhost:8000/api/events")    
+       // .then((res) => {
+        // setEvents(response.data);
+        // setLoading(false);
+        //   // console.log(res.data)
+        // // })
+        // .catch((err) => {
+        //   console.log(err);
+        //   setLoading(false);
+        // });
+      
   }, []);
 
   
+//  useEffect(() => {
+//   if(searchTerm == ""){
+//     return filteredEvents
+//   }
+//   const filtered = events.filter(value =>
+//       value.title.toLowerCase().includes(searchTerm.toLowerCase())
+//     ) 
+//     setFilteredEvents(filtered)
+//     // {
+//     //   filtered ? (setFilteredEvents(filtered)):("")
+//     // }
+   
 
+//   },[events, filteredEvents, searchTerm])
+
+useEffect(() => {
+  console.log("Events: ", events);
+}, [events]);
+
+useEffect(() => {
+  console.log("Title Search Term: ", titleSearchTerm);
+}, [titleSearchTerm]);
+
+useEffect(() => {
+  console.log("Date Search Term: ", dateSearchTerm);
+}, [dateSearchTerm]);
 
   return (
     <>
@@ -37,7 +74,18 @@ const Home = () => {
     
     <div className="flex justify-between items-center">
           <h1 className="text-3xl my-8">Events List</h1>
-          <Link to="/events/create">
+          <input  type="text"
+                  name="title"
+                  onChange={(e) => {setTitleSearchTerm(e.target.value)}} 
+                  placeholder="Filter by Title"
+                  className="border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl" />
+          <input  type="text"
+                  name="startDate"
+                  onChange={(e) => {setDateSearchTerm(e.target.value)}} 
+                  placeholder="Filter by Start Date"
+                  className="border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl" />
+
+            <Link to="/events/create">
             <MdOutlineAddBox className="text-sky-700 text-6xl" />
           </Link>
         </div>
@@ -47,8 +95,8 @@ const Home = () => {
             ) 
             :
             (
-
-              <EventList events={events} />
+              // <EventList  events={events} />
+              <Card titleSearchTerm={titleSearchTerm} dateSearchTerm={dateSearchTerm} events={events} />
             )
 
             }

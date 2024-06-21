@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
+import { createEvent } from "../api";
 
 
 
@@ -24,18 +25,19 @@ const AddEvent = ({ token }) => {
             //  const data = { title, description, totalParticipants, startDate, endDate};
             setLoading(true);
              
-          // const response = await axios.post('/events', data, {
-          //   headers: { Authorization: `Bearer ${token}` }
-          // });
-          axios
-            .post("http://localhost:8000/api/events/create", data, {
-              headers: { Authorization: `Bearer ${token}` }
-            })
-            .then(() => {
-              setLoading(false);
-              navigate("/");
-              alert("book create successfully")
-           })
+            createEvent({navigate, setLoading, data})
+
+        //   axios
+        //     .post("http://localhost:8000/api/events/create", data
+        //     //    {
+        //     //   headers: { Authorization: `Bearer ${token}` }
+        //     // }
+        //   )
+        //     .then(() => {
+        //       setLoading(false);
+        //       navigate("/");
+        //       alert("book create successfully")
+        //    })
 
         } catch (error) {
           console.error('Error creating event:', error);
